@@ -75,7 +75,7 @@ get_deboot ()
   cd $BASE_DIR/$DEBOOT_DIR;
   wget -c $DEBOOT_SRC/$DEBOOT_DEB;
   ar -x $DEBOOT_DEB;
-  tar -xf data.tar.xz;
+  tar -xf data.tar.gz;
   cd $BASE_DIR;
 }
 
@@ -107,7 +107,7 @@ EOF
   chroot $BASE_DIR/$ROOT_TARGET /usr/sbin/locale-gen
 
   #divert ischroot
-  #note that this throws error, my need to be fixed, not sure
+  #note that this throws error, may need to be fixed, not sure
   chroot $BASE_DIR/$ROOT_TARGET dpkg-divert --divert /usr/bin/ischroot.debianutils --rename /usr/bin/ischroot;
   chroot $BASE_DIR/$ROOT_TARGET /bin/ln -s /bin/true /usr/bin/ischroot;
 
@@ -124,6 +124,10 @@ upgrade_chroot ()
 install_build_tools ()
 {
   chroot $BASE_DIR/$ROOT_TARGET apt-get -qy install $REQUIRED_PACKAGES;
+  cat "deb http://emdebian.org/tools/debian/ jessie main" >> /etc/apt/sources.list
+  curl http://emdebian.org/tools/debian/emdebian-toolchain-archive.key | apt-key add -
+  dpkg --add-architecture armhf
+  apt-get update && apt-get -qy install crossbuild-essential-armhf
 }
 
 # this function gets the architecture for our chroot
