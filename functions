@@ -192,7 +192,7 @@ kernel_boot ()
 kernel_boot_with_buildroot_rd ()
 {
   echo 'Creating br2.img';
-  echo "cmdline=$KERNEL_CMD_LINE_BUILDROOT">$BASE_DIR/$KERNEL_OUT_DIR/cmd.txt
+  echo "cmdline=$KERNEL_CMD_LINE_BR2">$BASE_DIR/$KERNEL_OUT_DIR/cmd.txt
   abootimg --create $BASE_DIR/$KERNEL_OUT_DIR/br2.img -f $BASE_DIR/$KERNEL_OUT_DIR/cmd.txt -k $BASE_DIR/$KERNEL_OUT_DIR/$KERNEL_TARGET -r $BASE_DIR/$BR2_RD;
   echo 'Booting br2.img';
   fastboot boot $BASE_DIR/$KERNEL_OUT_DIR/br2.img;
