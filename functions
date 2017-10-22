@@ -202,6 +202,13 @@ kernel_boot_with_buildroot_rd ()
 # deboot comes out of the box with an offensive mount command.
 # this patches it to fix the error when mounting the proc file system
 # this patch from http://blog.tsunanet.net/2013/01/using-debootstrap-with-grsec.html?m=1
+get_firmware ()
+{
+  curl $FIRMWARE_SRC/linux-firmware-grouper_$FIRMWARE_VER.tar.gz | tar -xz
+  mkdir firmware
+  cp linux-firmware-nexus7-$FIRMWARE_VER/firmware/* ./firmware/
+  rm -rf linux-firmware-nexus7-$FIRMWARE_VER/
+}
 patch_deboot ()
 {
 local MOUNT_PATCH="--- usr/share/debootstrap/functions.orig	2013-11-26 07:15:53.909242727 -0600
