@@ -19,3 +19,4 @@ Commands:
   * `build` create the kernel from the source code
   * `boot` boot the newly built kernel on the Nexus to try it out. Your nexus needs to be in fastboot/bootloader mode and plugged into your computer for this to work.
   * `boot_buildroot` boot the kernel with buildroot ramdisk. Includes dropbear, firmware and different drivers. Tweak `/etc/wpa_supplicant.conf` in `rootfs.cpio.gz` to configure wifi.
+* `get-firmware` downloads Nexus' firmware into `firmware/` folder.
