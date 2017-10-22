@@ -124,7 +124,7 @@ upgrade_chroot ()
 install_build_tools ()
 {
   chroot $BASE_DIR/$ROOT_TARGET apt-get -qy install $REQUIRED_PACKAGES;
-  cat "deb http://emdebian.org/tools/debian/ jessie main" >> /etc/apt/sources.list
+  echo "deb http://emdebian.org/tools/debian/ jessie main" >> /etc/apt/sources.list
   curl http://emdebian.org/tools/debian/emdebian-toolchain-archive.key | apt-key add -
   dpkg --add-architecture armhf
   apt-get update && apt-get -qy install crossbuild-essential-armhf
