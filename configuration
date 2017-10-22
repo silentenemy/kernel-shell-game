@@ -29,25 +29,29 @@ BASE_DIR=`pwd`
 DUAL_PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin
 # target and sources for our chroot
 ROOT_TARGET=build_environment
-ROOT_SUITE=saucy
-ROOT_SOURCE=http://archive.ubuntu.com/ubuntu/
+
+## Chroot packages source
+ROOT_SUITE=jessie
+ROOT_SOURCE=http://deb.debian.org/debian/
+
 ROOT_LOCALE=en_US.UTF-8\ UTF-8
+
 ROOT_SOURCES_LIST="
-deb http://archive.ubuntu.com/ubuntu $ROOT_SUITE main restricted universe multiverse
-deb http://archive.ubuntu.com/ubuntu $ROOT_SUITE-updates main restricted universe multiverse
-deb http://archive.ubuntu.com/ubuntu $ROOT_SUITE-security main restricted universe multiverse
+deb http://mirror.yandex.ru/debian/ jessie main contrib non-free
+deb http://security.debian.org/ jessie/updates main
+deb http://mirror.yandex.ru/debian/ jessie-updates main
 "
+
 # these packages will be installed into the chroot build environment
 # and are needed to build the kernel
-REQUIRED_PACKAGES=gcc-arm-linux-gnueabihf\ ccache\ kernel-wedge\ libncursesw5-dev\ devscripts\ fakeroot
+REQUIRED_PACKAGES="ccache kernel-wedge libncursesw5-dev devscripts"
 
 # the script should be able to figure this out, but you can override
 # or set it manually here, leaving it blank is fine
 ROOT_ARCH=
 
 # debootstrap sources and working directory
-DEBOOT_DEB=debootstrap_1.0.55_all.deb
-#DEBOOT_DEB=debootstrap_1.0.48+deb7u1_all.deb
+DEBOOT_DEB=debootstrap_1.0.91_all.deb
 DEBOOT_SRC=http://ftp.debian.org/debian/pool/main/d/debootstrap
 DEBOOT_DIR=deboot_working
 
