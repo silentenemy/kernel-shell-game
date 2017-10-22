@@ -189,6 +189,14 @@ kernel_boot ()
   echo 'Booting test.img';
   fastboot boot $BASE_DIR/$KERNEL_OUT_DIR/test.img;
 }
+kernel_boot_with_buildroot_rd ()
+{
+  echo 'Creating br2.img';
+  echo "cmdline=$KERNEL_CMD_LINE_BUILDROOT">$BASE_DIR/$KERNEL_OUT_DIR/cmd.txt
+  abootimg --create $BASE_DIR/$KERNEL_OUT_DIR/br2.img -f $BASE_DIR/$KERNEL_OUT_DIR/cmd.txt -k $BASE_DIR/$KERNEL_OUT_DIR/$KERNEL_TARGET -r $BASE_DIR/$BR2_RD;
+  echo 'Booting br2.img';
+  fastboot boot $BASE_DIR/$KERNEL_OUT_DIR/br2.img;
+}
 # this patch was attempting to fix a problem that was actually a path
 # problem, so it's currently not used, but left in case it's needed later
 # deboot comes out of the box with an offensive mount command.
