@@ -107,6 +107,10 @@ case "$1" in
         echo "Booting the kernel"
         kernel_boot
         ;;
+      boot_buildroot)
+        echo "Booting the kernel with Buildroot ramdisk"
+        kernel_boot_with_buildroot_rd
+        ;;
     esac
     ;;
 esac
