@@ -113,6 +113,10 @@ case "$1" in
         ;;
     esac
     ;;
+  get-firmware)
+    echo "Downloading firmware"
+    get_firmware
+    ;;
 esac
 exit 0
 

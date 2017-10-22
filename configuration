@@ -55,6 +55,10 @@ DEBOOT_DEB=debootstrap_1.0.91_all.deb
 DEBOOT_SRC=http://ftp.debian.org/debian/pool/main/d/debootstrap
 DEBOOT_DIR=deboot_working
 
+# firmware source and version
+FIRMWARE_SRC=http://archive.ubuntu.com/ubuntu/pool/universe/l/linux-firmware-grouper
+FIRMWARE_VER=0.3
+
 # directory where the kernel source tree is kept
 KERNEL_DIR=kernel_source
 KERNEL_OUT_DIR=kernel_target
